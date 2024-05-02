@@ -6,7 +6,7 @@ const IMG_API = "https://image.tmdb.org/t/p/w1280";
 const defaultImage =
   "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
 
-const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
+const SerieCard = ({ name, poster_path, overview, vote_average, id }) => {
   // const { currentUser } = useAuthContext();
   const navigate = useNavigate();
 
@@ -24,15 +24,15 @@ const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
     <div
       className="movie"
       id="container"
-      onClick={() => navigate("/details/" + id)}
+      onClick={() => navigate("/series/details/" + id)}
     >
       <img
         loading="lazy"
         src={poster_path ? IMG_API + poster_path : defaultImage}
-        alt="movie-card"
+        alt="serie-card"
       />
       <div className="flex align-baseline justify-between p-1 text-white">
-        <h5>{title}</h5>
+        <h5>{name}</h5>
         
           <span className={`tag ${getVoteClass(vote_average)}`}>
             {vote_average.toFixed(1)}
@@ -47,4 +47,4 @@ const MovieCard = ({ title, poster_path, overview, vote_average, id }) => {
   );
 };
 
-export default MovieCard;
+export default SerieCard;

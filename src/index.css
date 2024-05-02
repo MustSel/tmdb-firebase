@@ -116,7 +116,9 @@ body {
   animation: animate 6s linear infinite;
   animation-delay: -3s;
 }
-
+.active{
+  color: red;
+}
 @keyframes animate {
   0% {
     transform: rotate(0deg);
