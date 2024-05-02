@@ -13,11 +13,14 @@ import {
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify, toastWarnNotify } from "../helpers/ToastNotify";
 
+
 const AuthContext = createContext();
 export const useAuthContext = () => {
   return useContext(AuthContext);
 };
 const AuthProvider = ({ children }) => {
+  const [yuksel, setYuksel] = useState("")
+  const [mustafa, setMustafa] = useState("")
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(sessionStorage.getItem("currentUser")) || false
   );
@@ -50,7 +53,14 @@ const AuthProvider = ({ children }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         // Signed in
-        navigate("/");
+        if (yuksel) {
+          navigate(`/series/details/${yuksel}`)
+        }else if (mustafa){
+
+          navigate(`/details/${mustafa}`);
+        } else {
+          navigate("/")
+        }
         toastSuccessNotify("Logged in successfully");
       })
       .catch((error) => {
@@ -113,7 +123,7 @@ const AuthProvider = ({ children }) => {
       }
     });
   };
-  const values = { signUp, signIn, googleProvider, forgotPassword, logOut, currentUser };
+  const values = { signUp, signIn, googleProvider, forgotPassword, logOut, currentUser,setYuksel, setMustafa };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 

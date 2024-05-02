@@ -7,7 +7,7 @@ const defaultImage =
   "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
 
 const SerieCard = ({ name, poster_path, overview, vote_average, id }) => {
-  // const { currentUser } = useAuthContext();
+  const { setYuksel } = useAuthContext();
   const navigate = useNavigate();
 
   const getVoteClass = (vote) => {
@@ -24,7 +24,10 @@ const SerieCard = ({ name, poster_path, overview, vote_average, id }) => {
     <div
       className="movie"
       id="container"
-      onClick={() => navigate("/series/details/" + id)}
+      onClick={() => {
+        setYuksel(id)
+        navigate("/series/details/" + id)
+      } }
     >
       <img
         loading="lazy"
