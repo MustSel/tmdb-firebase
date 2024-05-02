@@ -75,7 +75,14 @@ const AuthProvider = ({ children }) => {
     signInWithPopup(auth, provider)
       .then(() => {
         // The signed-in user info.
-        navigate("/");
+        if (yuksel) {
+          navigate(`/series/details/${yuksel}`)
+        }else if (mustafa){
+
+          navigate(`/details/${mustafa}`);
+        } else {
+          navigate("/")
+        }
         toastSuccessNotify("Logged in successfully");
       })
       .catch((error) => {
@@ -98,6 +105,8 @@ const AuthProvider = ({ children }) => {
   const logOut = () => {
     signOut(auth)
       .then(() => {
+        setYuksel("")
+        setMustafa("")
         toastSuccessNotify("Logged out successfully");
       })
       .catch((error) => {
