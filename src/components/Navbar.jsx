@@ -4,7 +4,7 @@ import Switch from "./Switch";
 import { useAuthContext } from "../context/AuthProvider";
 import avatar from "../assets/icons/avatar.png";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../assets/icons/logo1.png";
+import logo from "../assets/icons/logo3.png";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -25,7 +25,7 @@ export default function Navbar() {
                 <div className="flex flex-1 items-center justify-start ">
                   <div className="flex flex-shrink-0 items-center">
                     <a href="/" className=" text-dark dark:text-white">
-                      <img className="w-[80px]" src={logo} alt="" />
+                      <img className="w-[100px]" src={logo} alt="" />
                     </a>
                   </div>
                 </div>
